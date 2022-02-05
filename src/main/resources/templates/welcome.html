@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thyemleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Chat Room</title>
+        <script type="text/javascript" src="/js/welcome.js"></script>
+    </head>
+    <body>
+    <div>
+        <h2 align="center" th:inline="text"></h2>
+        <h3 align="center">Select a chat channel below</h3>
+        <hr style="height: 2px; border:none; color: #333; background-color:#333;"/>
+    </div>
+        
+    <div th:each="channel : ${channels}" align="center">
+        <a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}" th:text="${channel.channelName}"></a>
+    </div>
+
+
+    <form action="/welcome/createChannel" method="post">
+        <div align="Center" style="margin: 50px">
+            <input type="submit" value="Create Channel">
+        </div>
+    </form>
+
+    </body>
+
+
+
+</html>
