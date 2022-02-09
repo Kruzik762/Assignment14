@@ -42,8 +42,10 @@ public class MessageService {
     }
 
     public List<MessageDto> findByChannel(Long channelId) {
+        Channel channel = channelService.findById(channelId);
         List<MessageDto> submittedMessages = new ArrayList<>();
-        List<Message> messageList = messageRepository.findAllByChannelId(channelId);
+        List<Message> messageList = messageRepository.findByChannel(channel);
+//        List<Message> messageList = messageRepository.findAllByChannelId(channelId);
 
         for (Message message : messageList) {
             MessageDto messageDto = new MessageDto();
