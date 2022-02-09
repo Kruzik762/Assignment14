@@ -11,11 +11,6 @@
             <input type="submit" value="Home"/>
         </form>
     </div>
-    <div style="margin:5px">
-        <form action="/createChannel" method="get">
-            <input type="submit" value="Create a new channel"/>
-        </form>
-    </div>
 
     <h2 align="center" th:inline="text"></h2>
     <h3 align="center">Join a channel to get started!</h3>
@@ -23,7 +18,7 @@
 </div>
 <br>
 
-<div align="center">
+<div align="center" th:if="${#lists.size(channels) > 0}">
     <table bgcolor="silver" border="1px" class="fixed" width="500px">
         <thead style="background-color: black; color: silver">
             <th align="center" colspan="2">
@@ -39,6 +34,15 @@
         </tbody>
     </table>
 <!--    <a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}" th:text="${channel.channelName}"></a>-->
+</div>
+
+<div align="center" th:unless="${#lists.size(channels) > 0}">
+    <h2>There are currently no chat rooms. Create one to get started!</h2>
+    <div style="margin:5px">
+        <form action="/createChannel" method="get">
+            <input type="submit" value="Create a new channel"/>
+        </form>
+    </div>
 </div>
 
 <script>
