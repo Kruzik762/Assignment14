@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Channel</title>
+</head>
+<body>
+
+<div>
+    <div style="margin: 5px;">
+        <form action="/welcome" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+    </div>
+    <h2 align="center">Create a new channel to get started!</h2>
+    <hr style="height: 2px; border:none; color: #333; background-color:#333; width: 750px"/>
+</div>
+<br>
+ <div>
+    <form action="" method="post">
+        <div align="center">
+            <label><strong>Name your channel</strong> </label>
+            <br>
+            <input style="margin: 15px" type="text" th:field="${channel.channelName}"/>
+        </div>
+        <div align="Center" >
+            <input type="submit" value="Create Channel"/>
+        </div>
+    </form>
+
+ </div>
+    <script>
+            let user = sessionStorage.getItem("user");
+
+        if (user === null || user === "") {
+           window.location.replace("/welcome");
+        } else {
+            user = JSON.parse(sessionStorage.getItem("user"));
+        }
+    </script>
+</body>
+</html>

@@ -17,8 +17,8 @@ public class Channel {
     @Column(name = "channel_name")
     private String channelName;
 
-    @ManyToMany(mappedBy = "channels")
-    private List<User> users = new ArrayList<>();
+//    @ManyToMany(mappedBy = "channels")
+//    private List<User> users = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "channel")
     private List<Message> messages = new ArrayList<>();
@@ -39,13 +39,13 @@ public class Channel {
         this.channelName = channelName;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     public List<Message> getMessages() {
         return messages;
@@ -55,5 +55,11 @@ public class Channel {
         this.messages = messages;
     }
 
-
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "channelId=" + channelId +
+                ", channelName='" + channelName + '\'' +
+                '}';
+    }
 }

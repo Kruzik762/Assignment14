@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Chat Room</title>
+    </head>
+<body>
+<div>
+    <div style="margin: 5px;">
+        <form action="/welcome" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+    </div>
+    <div style="margin:5px">
+        <form action="/createChannel" method="get">
+            <input type="submit" value="Create a new channel"/>
+        </form>
+    </div>
+    <div align="center">
+        <h3 th:inline="text">Welcome to the <u>[[${channel.channelName}]]</u> channel!</h3>
+    </div>
+
+    <hr style="height: 2px; border:none; color: #333; background-color:#333; width: 750px"/>
+</div>
+    <h3 align="center">Start a Conversation below</h3>
+
+
+<div align="center">
+    <textarea readonly id="chatBox" style="width: 600px; height: 150px; margin: 5px" ></textarea><br>
+    <input id="messageInputBox" type="text" style="width: 445px" maxlength="128"/>
+    <input id="messageInputButton" type="button" value="Send"/>
+</div>
+<script type="text/javascript" src="/js/chat_room.js"></script>
+</body>
+</html>

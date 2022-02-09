@@ -20,5 +20,7 @@ public class ChannelService {
     public List<Channel> findAll() {
         return channelRepository.findAll();
     }
-
+    public Channel findById (Long id) {
+        return channelRepository.findById(id).orElse(null);
+    }
 }

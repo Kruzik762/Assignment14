@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thyemleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chat Room</title>
+</head>
+<body>
+<div>
+    <div style="margin: 5px;">
+        <form action="/welcome" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+    </div>
+    <div style="margin:5px">
+        <form action="/createChannel" method="get">
+            <input type="submit" value="Create a new channel"/>
+        </form>
+    </div>
+
+    <h2 align="center" th:inline="text"></h2>
+    <h3 align="center">Join a channel to get started!</h3>
+    <hr style="height: 2px; border:none; color: #333; background-color:#333; width: 750px"/>
+</div>
+<br>
+
+<div align="center">
+    <table bgcolor="silver" border="1px" class="fixed" width="500px">
+        <thead style="background-color: black; color: silver">
+            <th align="center" colspan="2">
+                Chat Room Channels
+            </th>
+        </thead>
+
+        <tbody>
+            <tr th:each="channel : ${channels}">
+                <td align="center"><a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}" th:text="Join"></a></td>
+                <td align="center" th:line="text">[[${channel.channelName}]]</td>
+            </tr>
+        </tbody>
+    </table>
+<!--    <a th:href="@{/channels/{channelId}(channelId=${channel.channelId})}" th:text="${channel.channelName}"></a>-->
+</div>
+
+<script>
+        let user = sessionStorage.getItem("user");
+
+    if (user === null || user === "") {
+       window.location.replace("/welcome");
+    } else {
+        user = JSON.parse(sessionStorage.getItem("user"));
+    }
+</script>
+</body>
+</html>
+
+

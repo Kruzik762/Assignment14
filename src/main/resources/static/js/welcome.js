@@ -1,22 +1,24 @@
-let user = prompt("Enter a display name");
-sessionStorage.getItem("user");
+let user = sessionStorage.getItem("user");
 
-if (user === null) {
-    displayName = prompt("Enter a screen name");    
+if (user === null || user === "") {   
+    let displayName = prompt("Enter a screen name");
+    while (displayName === null || displayName === "" || displayName === " ") {
+    displayName = prompt("Enter a screen name");
+    }
     postToSpring(displayName);
 } else {
-    postToSpring(displayName);
+    user = JSON.parse(sessionStorage.getItem("user"));
 }
 
+function postToSpring(displayName) {
 
-
-
-function postToSpring(user) {
     fetch("/welcome/createUser", {
         method : "POST",
-        headers : {"Content=Type" : "application/json"},
-        body : user
+        headers : {"Content-Type" : "application/json"},
+        body : displayName
     })
     .then(response => response.json())
-    .then(user => sessionStorage.setItem("user", JSON.stringify(user)));
+    .then(user => sessionStorage.setItem("user", JSON.stringify(user))
+    );
 }
+

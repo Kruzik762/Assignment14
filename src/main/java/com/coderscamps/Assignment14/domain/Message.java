@@ -56,4 +56,13 @@ public class Message {
     public void setChannel(Channel channel) {
         this.channel = channel;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "messageId=" + messageId +
+                ", user=" + user +
+                ", channel=" + channel +
+                '}';
+    }
 }

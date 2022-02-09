@@ -6,6 +6,8 @@ import com.coderscamps.Assignment14.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService{
 
@@ -16,10 +18,18 @@ public class UserService{
         return userRepository.save(user);
     }
 
+    public User findById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
 
-    public User createUser(String name) {
+    public String findNameById(Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        return user.getName();
+    }
+
+    public User createUser(String displayName) {
         User user = new User();
-        user.setName(name);
+        user.setName(displayName);
         return userRepository.save(user);
     }
 }
