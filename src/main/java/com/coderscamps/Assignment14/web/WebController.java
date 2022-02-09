@@ -25,6 +25,11 @@ public class WebController {
     @Autowired
     private ChannelService channelService;
 
+    @GetMapping("/")
+    public String goHome() {
+        return "redirect:/welcome";
+    }
+
     @GetMapping("/welcome")
     public String getWelcomePage(){
     return "welcome";
