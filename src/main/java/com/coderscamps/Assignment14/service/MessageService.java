@@ -29,11 +29,8 @@ public class MessageService {
     public void createMessage(MessageDto messageDto) {
         Message newMessage = new Message();
         Channel channel = channelService.findById(messageDto.getChannelId());
-        System.out.println(channel);        /////////////
         String messageContent = messageDto.getMessageContent();
-        System.out.println("***********message content: " + messageContent);     ////////////
         User user = userService.findById(messageDto.getUserId());
-        System.out.println("**********User: " + user);       ///////////////
         newMessage.setUser(user);
         newMessage.setChannel(channel);
         newMessage.setMessageData(messageContent);

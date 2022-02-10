@@ -47,8 +47,9 @@ function submitMessage(event) {
 
 
 function getMessages() {
+
     fetch(`/channels/${channelId}/getMessages`, {   
-        method : "POST",
+        method : "GET",
         headers : {"Content-Type" : "application/json"}
     })
     .then(response => response.json())

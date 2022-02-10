@@ -55,7 +55,7 @@ public class WebController {
     }
 
     @ResponseBody
-    @PostMapping("/channels/{channelId}/getMessages")
+    @GetMapping("/channels/{channelId}/getMessages")
     public List<MessageDto> messages (@PathVariable Long channelId) {
         return messageService.findByChannel(channelId);
     }
