@@ -48,14 +48,20 @@ function submitMessage(event) {
 
 function getMessages() {
 
-    fetch(`/channels/${channelId}/getMessages`, {   
-        method : "GET",
-        headers : {"Content-Type" : "application/json"}
-    })
-    .then(response => response.json())
-    .then( (data) => populateMessages(data))
+//    fetch(`/channels/${channelId}/getMessages`, {
+//        method : "GET",
+//        headers : {"Content-Type" : "application/json"}
+//    })
+//    .then(response => response.json())
+//    .then( (data) => populateMessages(data))
 
+fetch(`/channels/${channelId}/getMessages`)
+    .then(response => response.json())
+    .then(data => populateMessages(data));
 }
+
+
+
 
 function populateMessages(data) {
     console.log(data);
